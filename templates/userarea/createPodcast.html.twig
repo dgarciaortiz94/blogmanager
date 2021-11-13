@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Hello UserareaController!{% endblock %}
+
+{% block body %}
+
+{{ form_start(PodcastForm) }}
+    {{ form_row(PodcastForm.title) }}
+    {{ form_row(PodcastForm.description) }}
+    {{ form_row(PodcastForm.audio) }}
+    {{ form_row(PodcastForm.picture) }}
+    {{ form_row(PodcastForm.submit) }}
+{{ form_end(PodcastForm) }}
+
+{% endblock %}
