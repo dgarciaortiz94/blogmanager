@@ -1,29 +1,18 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <p>Crea una cuenta</p>
-    <p>O haz <a href="">login</a> si ya tienes cuenta</p>
+    <p>Registro</p>
 
     {{ form_start(registrationForm) }}
-        {{ form_label(registrationForm.name, 'Nombre*') }}
-        {{ form(registrationForm.name) }}
-
-        {{ form_label(registrationForm.firstname, 'Primer apellido*') }}
-        {{ form(registrationForm.firstname) }}
-
-        {{ form_label(registrationForm.lastname, 'Segundo apellido') }}
-        {{ form(registrationForm.lastname) }}
-
-        {{ form_label(registrationForm.email, 'Correo electrónico*') }}
-        {{ form(registrationForm.email) }}
-
-        {{ form_label(registrationForm.plainPassword, 'Contraseña*') }}
-        {{ form(registrationForm.plainPassword) }}
-
-        {{ form(registrationForm.agreeTerms) }}
-        {{ form_label(registrationForm.agreeTerms, 'Agregar términos y condiciones') }}
+        {{ form_row(registrationForm.name) }}
+        {{ form_row(registrationForm.firstname) }}
+        {{ form_row(registrationForm.lastname) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_label(registrationForm.agreeTerms, "Aceptar términos y condiciones generales") }}
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
