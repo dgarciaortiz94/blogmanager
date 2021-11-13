@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <p>Crea una cuenta</p>
+    <p>O haz <a href="">login</a> si ya tienes cuenta</p>
+
+    {{ form_start(registrationForm) }}
+        {{ form_label(registrationForm.name, 'Nombre*') }}
+        {{ form(registrationForm.name) }}
+
+        {{ form_label(registrationForm.firstname, 'Primer apellido*') }}
+        {{ form(registrationForm.firstname) }}
+
+        {{ form_label(registrationForm.lastname, 'Segundo apellido') }}
+        {{ form(registrationForm.lastname) }}
+
+        {{ form_label(registrationForm.email, 'Correo electrónico') }}
+        {{ form(registrationForm.email) }}
+
+        {{ form_label(registrationForm.plainPassword, 'Contraseña') }}
+        {{ form(registrationForm.plainPassword) }}
+
+        {{ form(registrationForm.agreeTerms) }}
+        {{ form_label(registrationForm.agreeTerms, 'Agregar términos y condiciones') }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
