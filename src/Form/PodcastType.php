@@ -4,7 +4,8 @@ namespace App\Form;
 
 use App\Entity\Podcast;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,11 +25,11 @@ class PodcastType extends AbstractType
                 'required' => true,
                 'label' => 'Contenido'
             ])
-            ->add('audio', FileType::class, [
+            ->add('audioFile', VichFileType::class, [
                 'label' => 'Podcast',
                 'mapped' => false
             ])
-            ->add('picture', FileType::class, [
+            ->add('pictureFile', VichImageType::class, [
                 'label' => 'Imagen de portada',
                 'mapped' => false
             ])
