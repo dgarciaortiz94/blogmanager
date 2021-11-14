@@ -17,32 +17,39 @@
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<div class="container row w-100">
+    <div class="col-lg-3 col-md-2"></div>
+    <div class="col-lg-6 col-md-8 col-sm-12">
+        <form method="post" class="form-login p-5 sm-w-100 md-w-50 lg-w-25 d-flex flex-column mx-auto sm-shadow rounded">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
 
-    <p>Login</p>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="Correo electrónico">
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Contraseña">
+            <p class="text-center display-4">Login</p>
 
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control form-control-sm my-3" autocomplete="email" required autofocus placeholder="Correo electrónico">
+            <input type="password" name="password" id="inputPassword" class="form-control form-control-sm mb-4" autocomplete="current-password" required placeholder="Contraseña">
 
-    {# REMEMBER ME #}
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+            {# REMEMBER ME #}
+                <div class="checkbox mb-3 d-flex justify-content-center">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+
+            <button class="btn btn-lg btn-primary mx-auto" type="submit">
+                Sign in
+            </button>
+        </form>
+    </div>
+    <div class="col-lg-3 col-md-2"></div>
+</div>
 {% endblock %}
