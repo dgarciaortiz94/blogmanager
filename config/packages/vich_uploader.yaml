@@ -1,0 +1,19 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       podcast_picture:
+           uri_prefix: /images/podcasts
+           upload_destination: '%kernel.project_dir%/public/images/podcasts'
+           namer: Vich\UploaderBundle\Naming\UniqidNamer
+           inject_on_load: false
+           delete_on_update: true
+           delete_on_remove: true
+
+       podcast_audio:
+           uri_prefix: /audios/podcasts
+           upload_destination: '%kernel.project_dir%/public/audios/podcasts'
+           namer: Vich\UploaderBundle\Naming\UniqidNamer
+           inject_on_load: false
+           delete_on_update: true
+           delete_on_remove: true
