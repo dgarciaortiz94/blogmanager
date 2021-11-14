@@ -19,6 +19,25 @@ class PodcastRepository extends ServiceEntityRepository
         parent::__construct($registry, Podcast::class);
     }
 
+
+    /**
+     * @return Podcast[] Returns an array of Podcast objects
+     */
+    public function getByUser($userId)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Podcast p
+            WHERE p.user = :userId
+            ORDER BY p.createDate ASC'
+        )->setParameter('userId', $userId);
+
+        return $query->getResult();
+    }
+
+
     // /**
     //  * @return Podcast[] Returns an array of Podcast objects
     //  */

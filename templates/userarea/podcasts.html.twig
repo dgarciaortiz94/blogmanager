@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% for podcast in podcasts %}
+        <pre>
+            {{ dump(podcast) }}
+        </pre>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/doctaforumpodcast/src/Controller/UserareaController.php'|file_link(0) }}">src/Controller/UserareaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/doctaforumpodcast/templates/userarea/index.html.twig'|file_link(0) }}">templates/userarea/index.html.twig</a></code></li>
-    </ul>
+        <br><br>
+    {% endfor %}
 </div>
 {% endblock %}
