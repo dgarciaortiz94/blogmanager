@@ -2,14 +2,19 @@
 
 {% block title %}Hello UserareaController!{% endblock %}
 
-{% block body %}
-
-{{ form_start(PodcastForm) }}
-    {{ form_row(PodcastForm.title) }}
-    {{ form_row(PodcastForm.description) }}
-    {{ form_row(PodcastForm.podcast) }}
-    {{ form_row(PodcastForm.image) }}
-    {{ form_row(PodcastForm.submit) }}
-{{ form_end(PodcastForm) }}
-
+{% block content %}
+    <div class="row mx-auto p-5 bg-dark d-flex justify-content-center text-white">
+        <div class="col-12">
+            {{ form_start(PodcastForm, { 'attr': {'class': 'container'}} ) }}
+                {{ form_row(PodcastForm.title) }}
+                {{ form_row(PodcastForm.description) }}
+                {{ form_label(PodcastForm.podcast, "Podcast") }}
+                {{ form_row(PodcastForm.podcast) }}
+                {{ form_label(PodcastForm.podcast, "Imagen de portada") }}
+                {{ form_row(PodcastForm.image) }}
+                {{ form_row(PodcastForm.submit) }}
+            {{ form_end(PodcastForm) }}
+        </div>
+    </div>
 {% endblock %}
+

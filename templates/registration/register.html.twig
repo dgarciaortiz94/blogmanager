@@ -7,10 +7,6 @@
         .left_block {
             background-image: url("{{ asset('images/web/register_left.jpg') }}")
         }
-
-        .right_block {
-            background-image: url("{{ asset('images/web/register_right.jpg') }}")
-        }
     </style>
 {% endblock %}
 
@@ -28,7 +24,8 @@
             <p class="text-item-h3 h3">Crea</p>
         </div>
         <div class="right_block container col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
-            <p class="display-3 mb-5">Registro</p>
+            <p class="display-3 mb-4">Registrate</p>
+            <p class="mb-5">O haz <a href="{{ path("app_login") }}">login</a> si ya tienes cuenta</p>
 
             {{ form_start(registrationForm) }}
                 {{ form_label(registrationForm.name, "Nombre") }}

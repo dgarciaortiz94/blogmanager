@@ -19,15 +19,25 @@ class PodcastType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'required' => true,
-                'label' => 'Título'
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Escribe aquí tu título',
+                    'class' => 'mb-3'
+                ]
             ])
             ->add('description', TextareaType::class, [
                 'required' => true,
-                'label' => 'Contenido'
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Contenido del artículo',
+                    'cols' => '100',
+                    'rows' => '10',
+                    'class' => 'mb-3'
+                ]
             ])
             ->add('podcast', FileType::class, [
                 'required' => false,
-                'label' => 'Podcast',
+                'label' => false,
                 'mapped' => false,
                 'constraints' => [
                     new File([
@@ -35,10 +45,13 @@ class PodcastType extends AbstractType
                         'mimeTypesMessage' => 'Por favor, carga un archivo válido. Tamaño máximo: 10 MB.',
                     ])
                 ],
+                'attr' => [
+                    'class' => 'mb-3'
+                ]
             ])
             ->add('image', FileType::class, [
                 'required' => false,
-                'label' => 'Imagen de portada',
+                'label' => false,
                 'mapped' => false,
                 'constraints' => [
                     new File([
@@ -51,9 +64,15 @@ class PodcastType extends AbstractType
                         'mimeTypesMessage' => 'Por favor, carga un archivo válido. Tamaño máximo: 10 MB. Formatos: .jpg, .jpeg y .png',
                     ])
                 ],
+                'attr' => [
+                    'class' => 'mb-5'
+                ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Enviar'
+                'label' => 'Enviar',
+                'attr' => [
+                    'class' => 'btn btn-primary'
+                ]
             ])
         ;
     }

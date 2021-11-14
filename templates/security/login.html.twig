@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 {% endblock %}
 
-{% block content %}
+{% block body %}
 <div class="container row w-100">
     <div class="col-lg-3 col-md-2"></div>
     <div class="col-lg-6 col-md-8 col-sm-12">
@@ -32,6 +32,7 @@
             {% endif %}
 
             <p class="text-center display-4">Login</p>
+            <p class="mb-4 text-center"><a href="{{ path("app_register") }}">Regístrate</a> si aun no tienes cuenta</p>
 
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control form-control-sm my-3" autocomplete="email" required autofocus placeholder="Correo electrónico">
             <input type="password" name="password" id="inputPassword" class="form-control form-control-sm mb-4" autocomplete="current-password" required placeholder="Contraseña">
