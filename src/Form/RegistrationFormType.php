@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,17 +19,31 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', EmailType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control form-control-sm mb-3'
+                ]
+            ])
             ->add('name', TextType::class, [
+                'label' => false,
                 'required' => true,
-                'label' => 'Correo electrónico'
+                'attr' => [
+                    'class' => 'form-control form-control-sm mb-3'
+                ]
             ])
             ->add('firstname', TextType::class, [
+                'label' => false,
                 'required' => true,
-                'label' => 'Primer apellido'
+                'attr' => [
+                    'class' => 'form-control form-control-sm mb-3'
+                ]
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'Segundo apellido'
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control form-control-sm mb-3'
+                ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => false,
@@ -39,14 +54,23 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Debes aceptar los términos y condiciones',
                     ]),
                 ],
+                'row_attr' => [
+                    'class' => 'd-inline-block'
+                ],
+                'attr' => [
+                    'class' => 'mb-5'
+                ]
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'label' => false,
                 'required' => true,
-                'label' => 'Contraseña',
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'form-control form-control-sm mb-3'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Por favor, introduce una contraseña',
