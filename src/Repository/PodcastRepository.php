@@ -38,6 +38,23 @@ class PodcastRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * @return Podcast[] Returns an array of Podcast objects
+     */
+    public function getLastPodcasts($numberOfPodcasts)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Podcast p
+            ORDER BY p.createDate DESC'
+        )->setMaxResults($numberOfPodcasts);
+
+        return $query->getResult();
+    }
+
+
     // /**
     //  * @return Podcast[] Returns an array of Podcast objects
     //  */

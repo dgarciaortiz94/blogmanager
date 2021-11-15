@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminpanel")
+ * @Route("/admin-panel")
  */
 class AdminpanelController extends AbstractController
 {
