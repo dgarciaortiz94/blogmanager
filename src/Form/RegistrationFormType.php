@@ -40,6 +40,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('lastname', TextType::class, [
+                'required' => false,
                 'label' => false,
                 'attr' => [
                     'class' => 'form-control form-control-sm mb-3'
