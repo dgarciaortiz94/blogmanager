@@ -3,36 +3,34 @@
 {% block body %}
     {% block header %}    
         <div class="container d-flex justify-content-between align-items-baseline py-3 border-bottom">
-            <div class="h2">
-                <p>Bienvenido</p>
-            </div>
-
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                      <a class="nav-link" href="{{ path('home') }}">Home<span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    {% if app.user %}
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ path('user_podcasts') }}">Mis podcasts</a>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{{ path('user_podcasts') }}">Mis podcast</a>
                     </li>
-                    {% endif %}
                   </ul>
-                </div>
-            </nav>
-
+              </nav>
             <div>
                 <p><a href="{{ path('app_login') }}">Login</a> / <a href="{{ path('app_register') }}">Registro</a></p>
             </div>
         </div>
     {% endblock %}
 
+    <section>
     {% block content %}{% endblock %}
+    </section>
 
     {% block footer %}
-        <div>
-            <div class="container-fluid row d-flex justify-content-between mx-auto border-top p-5">
+        <div class="mx-5">
+            <div class="container-fluid row d-flex justify-content-between mx-auto border-top px-5 pt-4 pb-2">
                 <div class="col-4 text-center"><p>Aplicación web desarrollada en Symfony sin fines comerciales para Doctaforum.</p></div>
                 <div class="col-4 text-center"><p>Diego García Ortiz</p></div>
                 <div class="col-4 text-center">
