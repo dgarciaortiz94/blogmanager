@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      */
     public function index(): Response
     {
@@ -18,6 +18,7 @@ class HomeController extends AbstractController
         $treeLastPodcasts = $podcastRepository->getLastPodcasts(3);
 
         return $this->render('home/index.html.twig', [
+            'notCrudButtons' => true,
             'podcasts' => $treeLastPodcasts
         ]);
     }

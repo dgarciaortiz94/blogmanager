@@ -28,15 +28,15 @@
             <p class="mb-5">O haz <a href="{{ path("app_login") }}" class="text-success">login</a> si ya tienes cuenta</p>
 
             {{ form_start(registrationForm) }}
-                {{ form_label(registrationForm.name, "Nombre") }}
+                {{ form_label(registrationForm.name, "Nombre*") }}
                 {{ form_row(registrationForm.name) }}
-                {{ form_label(registrationForm.firstname, "Primer apellido") }}
+                {{ form_label(registrationForm.firstname, "Primer apellido*") }}
                 {{ form_row(registrationForm.firstname) }}
                 {{ form_label(registrationForm.lastname, "Segundo apellido") }}
                 {{ form_row(registrationForm.lastname) }}
-                {{ form_label(registrationForm.email, "Correo electrónico") }}
+                {{ form_label(registrationForm.email, "Correo electrónico*") }}
                 {{ form_row(registrationForm.email) }}
-                {{ form_label(registrationForm.plainPassword, "Contraseña") }}
+                {{ form_label(registrationForm.plainPassword, "Contraseña*") }}
                 {{ form_row(registrationForm.plainPassword) }}
                 {{ form_row(registrationForm.agreeTerms) }}
                 {{ form_label(registrationForm.agreeTerms, "Aceptar términos y condiciones generales") }}
