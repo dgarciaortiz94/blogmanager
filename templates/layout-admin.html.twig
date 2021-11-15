@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block name %}{% endblock %}
+
+{% block stylesInLine %}
+    <style>
+        .nav-item {
+            border-bottom: rgb(37, 37, 43) 1px solid;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% block header %}
+        <header class="border-bottom">
+            <div class="bg-light px-5 py-4 d-flex justify-content-between align-items-baseline">
+                <div>
+                    <p class="h3">Panel de administración</p>
+                </div>
+                <div>
+                    <button class="btn btn-warning">Cerrar sesión</button>
+                </div>
+            </div>
+        </header>
+    {% endblock %}
+
+    {% block menu %}
+    <div class="row justify-content-between mr-5">
+        <nav class="bg-dark px-5 col-2 nav-bar">
+            <ul class="nav flex-column text-center my-5">
+                <li class="nav-item p-2">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item p-2">
+                    <a class="nav-link" href="/admin-panel/podcasts">Podcasts</a>
+                </li>
+                <li class="nav-item p-2">
+                    <a class="nav-link" href="/admin-panel/usuarios">Usuarios</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="col-7 shadow my-5 px-4 pb-4 bg-light rounded">
+            {% block content %}{% endblock %}
+        </section>
+
+
+        <aside class="col-2 shadow my-5 px-4 pb-4 bg-light rounded">
+            <p class="h4 py-2 text-secondary border-bottom border-secondary">Estadísticas</p>
+        </aside>
+    </div>
+    
+    {% endblock %}
+
+    {% block footer %}
+    
+    {% endblock %}
+{% endblock %}

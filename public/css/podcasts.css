@@ -19,3 +19,11 @@
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+.description-container {
+    height: 70%;
+}
+
+.card-body {
+    height: 32vh;
+}
