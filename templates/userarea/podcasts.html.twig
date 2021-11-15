@@ -12,14 +12,20 @@
     <div class="container my-5">
         <div class="row row-cols-auto">
             {% for podcast in podcasts %}
+                    {% set url = podcast.title|replace({" " : "-"}) %}
                     <div class="col-lg-4 col-md-6 col-sm-12 my-4">
-                        <div class="podcast border">
-                            <div class="picture-podcast mb-3 text-white" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
-                                <div class="dark-filter">
-                                    <h2 class="title-podcast px-3 py-2">{{ podcast.title }}</h2>
+                            <div class="podcast border shadow">
+                                <div class="picture-podcast mb-3 text-white" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
+                                    <div class="dark-filter d-flex">
+                                        <h2 class="title-podcast px-3 py-2 w-75">{{ podcast.title }}</h2>
+                                        <div class="w-25 mt-3">
+                                            <button>E</button>
+                                            <button>B</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                             <p class="px-3">{{ podcast.description | slice(0, 400) }}...</p>
+                            <a href="/ver-podcast/{{url}}" class="text-right"><p>Leer más</p></a>
                         </div>
                     </div>
             {% endfor %}
