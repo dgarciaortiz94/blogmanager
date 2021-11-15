@@ -25,7 +25,7 @@
         </div>
         <div class="right_block container col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
             <p class="display-3 mb-4">Registrate</p>
-            <p class="mb-5">O haz <a href="{{ path("app_login") }}">login</a> si ya tienes cuenta</p>
+            <p class="mb-5">O haz <a href="{{ path("app_login") }}" class="text-success">login</a> si ya tienes cuenta</p>
 
             {{ form_start(registrationForm) }}
                 {{ form_label(registrationForm.name, "Nombre") }}

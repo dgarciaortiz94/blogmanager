@@ -2,14 +2,25 @@
 
 {% block title %}Mis podcasts{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/podcasts.css') }}">
+{% endblock %}
+
 {% block content %}
     <div class="container my-5">
         <div class="row row-cols-auto">
             {% for podcast in podcasts %}
-                    <div class="col-4 border">
-                        <img src="{{ asset('images/podcasts/' ~ podcast.picture) }}" alt="{{ podcast.title }}" class="img-thumbnail">
-                        <p>{{ podcast.description }} ...</p>
-                        <p>{{ podcast.title }}</p>
+                    <div class="col-lg-4 col-md-6 col-sm-12 my-4">
+                        <div class="podcast border">
+                            <div class="picture-podcast mb-3 text-white" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
+                                <div class="dark-filter">
+                                    <h2 class="title-podcast px-3 py-2">{{ podcast.title }}</h2>
+                                </div>
+                            </div>
+                            <p class="px-3">{{ podcast.description | slice(0, 400) }}...</p>
+                        </div>
                     </div>
             {% endfor %}
         </div>

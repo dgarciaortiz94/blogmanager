@@ -1,0 +1,21 @@
+.podcast {
+    height: 500px;
+}
+
+.picture-podcast {
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.title-podcast {
+    font-size: 1.5em;
+    text-shadow: black 1px 1px 3px;
+}
+
+.dark-filter {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
