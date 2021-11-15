@@ -7,10 +7,12 @@
                 <div class="picture-podcast mb-3 text-white" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
                     <div class="dark-filter d-flex">
                         <h2 class="title-podcast px-3 py-2 w-75">{{ podcast.title }}</h2>
-                        <div class="w-25 mt-3">
-                            <button class="btn btn-warning">E</button>
-                            <button class="btn btn-danger">B</button>
+                        {% if (app.user is defined and app.user is not null) and (podcast.user.id == app.user.id and notCrudButtons is not defined) %}
+                        <div class="d-flex w-25 mt-3">
+                            <button class="btn btn-warning crud-button mr-1"><i class="bi bi-pencil-fill"></i></button>
+                            <button class="btn btn-danger crud-button ml-1"><i class="bi bi-archive-fill"></i></button>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="card-body">
