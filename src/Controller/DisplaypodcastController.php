@@ -15,13 +15,8 @@ class DisplaypodcastController extends AbstractController
     public function index($podcastName): Response
     {
         $podcastName = str_replace("-", " ",$podcastName);
-        
         $podcastRepository = $this->getDoctrine()->getRepository(Podcast::class);
-
         $podcast = $podcastRepository->findOneBy(array('title' => $podcastName));
-
-
-
 
         return $this->render('displaypodcast/index.html.twig', [
             'podcast' => $podcast
