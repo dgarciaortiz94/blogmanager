@@ -1,9 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'formPodcast.html.twig' %}
 
 {% block title %}Nuevo Podcast{% endblock %}
 
-{% block body %}
+{% block form %}
     <h1>Crear nuevo podcast</h1>
 
     {{ include('podcast/_form.html.twig') }}
+{% endblock %}
+
+{% block previewView %}
+    <p>Hola</p>
 {% endblock %}

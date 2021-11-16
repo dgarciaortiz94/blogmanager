@@ -5,7 +5,11 @@
 {% block stylesInLine %}
     <style>
         .nav-item {
-            border-bottom: rgb(37, 37, 43) 1px solid;
+            border-bottom: rgb(89, 89, 95) 1px solid;
+        }
+
+        .nav-link {
+            color: #ffffff;
         }
     </style>
 {% endblock %}
@@ -26,10 +30,13 @@
 
     {% block menu %}
     <div class="row justify-content-between mr-5">
-        <nav class="bg-dark px-5 col-2 nav-bar">
+        <nav class="bg-secondary px-5 col-2 nav-bar">
             <ul class="nav flex-column text-center my-5">
                 <li class="nav-item p-2">
                     <a class="nav-link" href="{{ path('home') }}">Home</a>
+                </li>
+                <li class="nav-item p-2">
+                    <a class="nav-link" href="{{ path('user_podcasts') }}">Area usuario</a>
                 </li>
                 <li class="nav-item p-2">
                     <a class="nav-link" href="{{ path('adminpanel.show_podcasts') }}">Podcasts</a>
