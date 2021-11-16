@@ -57,6 +57,7 @@ class PodcastRepository extends ServiceEntityRepository
             ->andWhere('p.isActive = 1')
             ->orderBy('p.createDate', 'DESC')
             ->getQuery()
+            ->setMaxResults($numberOfPodcasts)
             ->getResult()
         ;
     }

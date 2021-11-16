@@ -9,8 +9,8 @@
                         <h2 class="title-podcast px-3 py-2 w-75">{{ podcast.title }}</h2>
                         {% if (app.user is defined and app.user is not null) and (podcast.user.id == app.user.id and notCrudButtons is not defined) %}
                         <div class="d-flex w-25 mt-3">
-                            <button class="btn btn-warning crud-button mr-1"><i class="bi bi-pencil-fill"></i></button>
-                            <button class="btn btn-danger crud-button ml-1"><i class="bi bi-archive-fill"></i></button>
+                            <a href="{{ path('podcast_edit', {'id': podcast.id}) }}"><button class="btn btn-warning crud-button mr-1"><i class="bi bi-pencil-fill"></i></button></a>
+                            {% include "podcast/_disablePodcast_form.html.twig" %}
                         </div>
                         {% endif %}
                     </div>

@@ -21,14 +21,18 @@
     </thead>
     <tbody>
         {% for podcast in podcasts %}
-        <tr>
+        <tr class="{% if not podcast.isActive %}bg-secondary{% endif %}">
             <th scope="row">{{ podcast.title }}</th>
             <td>{{ podcast.title }}</td>
             <td>{{ podcast.createDate | date("m/d/Y") }}</td>
-            <td>{{ podcast.createDate | date("m/d/Y") }}</td>
-            <td>
-                <button class="btn btn-warning">E</button>
-                <button class="btn btn-danger">B</button>
+            <td>{{ podcast.user.email }}</td>
+            <td class="d-flex justify-content-around">
+                <a href="{{ path('podcast_edit', {'id': podcast.id}) }}"><button class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button></a>
+                {% if podcast.isActive %}
+                    {% include "podcast/_disablePodcast_form.html.twig" %}
+                {% else %}
+                    {% include "podcast/_enablePodcast_form.html.twig" %}
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

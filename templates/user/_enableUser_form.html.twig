@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('user_enable', {'id': user.id}) }}" onsubmit="return confirm('¿Estás seguro de que quieres activar a este usuario?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('enable' ~ user.id) }}">
+    <button class="crud-button btn btn-success"><i class="bi bi-check2"></i></button>
+</form>

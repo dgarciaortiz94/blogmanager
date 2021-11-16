@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('podcast_disable', {'id': podcast.id}) }}" onsubmit="return confirm('¿Estas seguro de que quieres desactivar este podcast?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('disable' ~ podcast.id) }}">
+    <button class="crud-button btn btn-danger"><i class="bi bi-archive-fill"></i></button>
+</form>
