@@ -11,7 +11,7 @@
 {% block content %}
     <div class="container d-flex justify-content-between align-items-baseline">
         <h1 class="mt-5">Mis podcasts</h1>
-        <a href="{{ path('user_create_podcast') }}"><button class="btn btn-success mr-0 h-25 shadow">Crear podcast</button></a>
+        <a href="{{ path('podcast_new') }}"><button class="btn btn-success mr-0 h-25 shadow">Crear podcast</button></a>
     </div>
     {% include "/includes/podcasts.html.twig" %}
 {% endblock %}

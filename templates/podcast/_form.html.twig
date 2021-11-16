@@ -1,4 +1,23 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_label(form.title, "Título") }}
+    {{ form_row(form.title) }}
+
+    {{ form_label(form.description, "Contenido") }}
+    {{ form_row(form.description) }}
+    
+    {{ form_label(form.podcast, "Podcast") }}
+    {% if edit is defined %}
+        {{ form_row(form.podcast, {'required': false}) }}
+    {% else %}
+        {{ form_row(form.podcast) }}
+    {% endif %}
+
+    {{ form_label(form.image, "Imagen de portada") }}
+    {% if edit is defined %}
+        {{ form_row(form.image, {'required': false}) }}
+    {% else %}
+        {{ form_row(form.image) }}
+    {% endif %}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

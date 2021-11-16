@@ -36,7 +36,7 @@ class PodcastType extends AbstractType
                 ]
             ])
             ->add('podcast', FileType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => false,
                 'mapped' => false,
                 'constraints' => [
@@ -50,7 +50,7 @@ class PodcastType extends AbstractType
                 ]
             ])
             ->add('image', FileType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => false,
                 'mapped' => false,
                 'constraints' => [
