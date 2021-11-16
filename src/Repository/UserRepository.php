@@ -36,6 +36,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
+
+    /**
+     * @return Podcast Returns an array of Podcast objects
+     */
+    public function findAllExceptAdmin()
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.id != 2')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

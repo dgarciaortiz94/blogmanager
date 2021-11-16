@@ -21,20 +21,30 @@ class PodcastRepository extends ServiceEntityRepository
 
 
     /**
+     * @return Podcast Returns an array of Podcast objects
+     */
+    public function findAllActives()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isActive = 1')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+    /**
      * @return Podcast[] Returns an array of Podcast objects
      */
     public function getByUser($userId)
     {
-        $entityManager = $this->getEntityManager();
-
-        $query = $entityManager->createQuery(
-            'SELECT p
-            FROM App\Entity\Podcast p
-            WHERE p.user = :userId
-            ORDER BY p.createDate ASC'
-        )->setParameter('userId', $userId);
-
-        return $query->getResult();
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isActive = 1')
+            ->andWhere('p.user = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
 
@@ -43,15 +53,27 @@ class PodcastRepository extends ServiceEntityRepository
      */
     public function getLastPodcasts($numberOfPodcasts)
     {
-        $entityManager = $this->getEntityManager();
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isActive = 1')
+            ->orderBy('p.createDate', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
-        $query = $entityManager->createQuery(
-            'SELECT p
-            FROM App\Entity\Podcast p
-            ORDER BY p.createDate DESC'
-        )->setMaxResults($numberOfPodcasts);
 
-        return $query->getResult();
+    /**
+     * @return Podcast Returns an array of Podcast objects
+     */
+    public function getOneByTitle($title)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.title = :title')
+            ->setParameter('title', $title)
+            ->andWhere('p.isActive = 1')
+            ->getQuery()
+            ->getSingleResult()
+        ;
     }
 
 

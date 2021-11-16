@@ -16,7 +16,12 @@ class DisplaypodcastController extends AbstractController
     {
         $podcastName = str_replace("-", " ",$podcastName);
         $podcastRepository = $this->getDoctrine()->getRepository(Podcast::class);
-        $podcast = $podcastRepository->findOneBy(array('title' => $podcastName));
+        $podcast = $podcastRepository->getOneByTitle($podcastName);
+
+        if (empty($podcast)) {
+            echo "Este podcast no existe";
+            die;
+        }
 
         return $this->render('displaypodcast/index.html.twig', [
             'podcast' => $podcast

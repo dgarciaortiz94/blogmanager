@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminpanelController extends AbstractController
 {
-    /**
-     * @Route("/", name="adminpanel.index")
-     */
-    public function index(): Response
-    {
-        return $this->render('adminpanel/index.html.twig', [
-            'controller_name' => 'AdminpanelController',
-        ]);
-    }
+    // /**
+    //  * @Route("/", name="adminpanel.index")
+    //  */
+    // public function index(): Response
+    // {
+    //     return $this->render('adminpanel/index.html.twig', [
+    //         'controller_name' => 'AdminpanelController',
+    //     ]);
+    // }
 
 
     /**
@@ -31,7 +31,7 @@ class AdminpanelController extends AbstractController
     public function showUsers(): Response
     {
         $userRepository = $this->getDoctrine()->getRepository(User::class);
-        $users = $userRepository->findAll();
+        $users = $userRepository->findAllExceptAdmin();
 
         return $this->render('adminpanel/showUsers.html.twig', [
             'users' => $users

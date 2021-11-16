@@ -19,15 +19,15 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class UserareaController extends AbstractController
 {
 
-    /**
-     * @Route("/", name="user_area")
-     */
-    public function index(): Response
-    {
-        return $this->render('userarea/index.html.twig', [
-            'controller_name' => 'UserareaController',
-        ]);
-    }
+    // /**
+    //  * @Route("/", name="user_area")
+    //  */
+    // public function index(): Response
+    // {
+    //     return $this->render('userarea/index.html.twig', [
+    //         'controller_name' => 'UserareaController',
+    //     ]);
+    // }
 
 
     /**
@@ -108,6 +108,7 @@ class UserareaController extends AbstractController
 
             $podcast->setCreateDate(new DateTime());
             $podcast->setUser($user);
+            $podcast->setIsActive(true);
 
             $entityManager->persist($podcast);
             $entityManager->flush();
