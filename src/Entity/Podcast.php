@@ -54,6 +54,11 @@ class Podcast
      */
     private $createDate;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
 
     public function getId(): ?int
     {
@@ -126,6 +131,18 @@ class Podcast
     public function getPicture(): ?string
     {
         return $this->picture;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 
 }
