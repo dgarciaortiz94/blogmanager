@@ -78,32 +78,14 @@ class PodcastRepository extends ServiceEntityRepository
     }
 
 
-    // /**
-    //  * @return Podcast[] Returns an array of Podcast objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Podcast Returns an array of Podcast objects
+     */
+    public function getMostCommentedPodcast($title)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $em = $this->getEntityManager();
 
-    /*
-    public function findOneBySomeField($value): ?Podcast
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+        return $em->createQuery("SELECT COUNT(USER_ID)")
         ;
     }
-    */
 }

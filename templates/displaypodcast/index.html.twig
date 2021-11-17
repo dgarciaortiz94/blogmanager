@@ -23,28 +23,7 @@
         <aside class="comments-container col-md-5 col-lg-4 col-xl-3 m-xs-5 m-md-0 bg-white position">
             <p class="h2 bg-danger px-5 py-3 mb-4 text-white">Comentarios</p>
             <div class="px-5">
-            {% include "comment/_form.html.twig" %}
-
-                <div class="my-4">
-                    {% set index = numComments + 1 %}
-
-                    {% for commentItem in commentItems %}
-                        {% set index = index - 1 %}
-                        {% if commentItem.isActive %}
-                            <div class="d-flex justify-content-between">
-                                <p><b><span class="h3 text-secondary mr-3">#{{ index }}</span>{{ commentItem.user.name }} {{ commentItem.user.firstname }}</b></p>
-                                {% if app.user.id is defined and (commentItem.user.id == app.user.id or app.user.name == 'Admin')  %}
-                                    {% include "comment/_disableComment_form.html.twig" %}
-                                {% endif %}
-                            </div>
-                            <p>{{ commentItem.content }}</p>
-                        {% else %}
-                            <p class="h3 text-secondary mr-3">#{{ index }}</p>
-                            <i><p>Este comentario ha sido eliminado.</p></i>
-                        {% endif %}
-                        <hr>
-                    {% endfor %}
-                </div>
+                {% include "comment/index.html.twig" with {'commentItems': commentItems} %}
             </div>
         </aside>
     </div>

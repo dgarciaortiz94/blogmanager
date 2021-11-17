@@ -1,5 +1,6 @@
 .podcast {
     height: 500px;
+    overflow: hidden;
 }
 
 .picture-podcast {
@@ -21,7 +22,8 @@
 }
 
 .description-container {
-    height: 70%;
+    height: 170px;
+    
 }
 
 .card-body {

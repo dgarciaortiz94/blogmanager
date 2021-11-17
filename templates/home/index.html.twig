@@ -11,7 +11,8 @@
 {% block content %}
 <section>
     <h1 class="container mt-5">Podcasts mas recientes</h1>
-    {% include "/includes/podcasts.html.twig" %}
+    {% include "includes/noPodcasts.html.twig" with {'podcasts': podcasts} %}
+    {% include "/podcast/index.html.twig" with {'podcasts': podcasts} %}
 
     <div class="bg-dark p-5 mb-5">
         <div class="container d-flex justify-content-between align-items-center text-white">

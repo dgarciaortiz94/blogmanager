@@ -16,5 +16,5 @@
 
     {% include "includes/noPodcasts.html.twig" with {'podcasts': podcasts} %}
 
-    {% include "/includes/podcasts.html.twig" %}
+    {% include "/podcast/index.html.twig" with {'podcasts': podcasts} %}
 {% endblock %}

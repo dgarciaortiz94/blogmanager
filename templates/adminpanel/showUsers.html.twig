@@ -12,6 +12,7 @@
 
 {% include "includes/noUsers.html.twig" with {'users': users} %}
 
+{% if users|length > 1 %}
 <table class="table table-striped text-center my-5">
     <thead>
         <tr>
@@ -25,22 +26,26 @@
     </thead>
     <tbody>
         {% for user in users %}
-        <tr class="{% if not user.isActive %}bg-secondary{% endif %}">
-            <th scope="row">{{ user.id }}</th>
-            <td>{{ user.name }}</td>
-            <td>{{ user.firstname }} {{ user.lastname }}</td>
-            <td>{{ user.email }}</td>
-            <td><a href=""><button class="btn btn-warning"><i class="bi bi-eye-fill"></i></button></a></td>
-            <td class="d-flex justify-content-around">
-                <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button></a>
-                {% if user.isActive %}
-                    {% include "user/_disableUser_form.html.twig" %}
-                {% else %}
-                    {% include "user/_enableUser_form.html.twig" %}
-                {% endif %}
-            </td>
-        </tr>
+            {% if user.name != 'Admin' %}
+                <tr class="{% if not user.isActive %}bg-secondary{% endif %}">
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.firstname }} {{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><a href=""><button class="btn btn-warning"><i class="bi bi-eye-fill"></i></button></a></td>
+                    <td class="d-flex justify-content-around">
+                        <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button></a>
+                        {% if user.isActive %}
+                            {% include "user/_disableUser_form.html.twig" %}
+                        {% else %}
+                            {% include "user/_enableUser_form.html.twig" %}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
+
 {% endblock %}

@@ -12,33 +12,36 @@
 
 {% include "includes/noPodcasts.html.twig" with {'podcasts': podcasts} %}
 
-<table class="table table-striped text-center my-5">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Título</th>
-            <th scope="col">Fecha de creación</th>
-            <th scope="col">Usuario</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for podcast in podcasts %}
-        <tr class="{% if not podcast.isActive %}bg-secondary{% endif %}">
-            <th scope="row">{{ podcast.title }}</th>
-            <td>{{ podcast.title }}</td>
-            <td>{{ podcast.createDate | date("m/d/Y") }}</td>
-            <td>{{ podcast.user.email }}</td>
-            <td class="d-flex justify-content-around">
-                <a href="{{ path('podcast_edit', {'id': podcast.id}) }}"><button class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button></a>
-                {% if podcast.isActive %}
-                    {% include "podcast/_disablePodcast_form.html.twig" %}
-                {% else %}
-                    {% include "podcast/_enablePodcast_form.html.twig" %}
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% if podcasts|length > 0 %}
+    <table class="table table-striped text-center my-5">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Título</th>
+                <th scope="col">Fecha de creación</th>
+                <th scope="col">Usuario</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for podcast in podcasts %}
+            <tr class="{% if not podcast.isActive %}bg-secondary{% endif %}">
+                <th scope="row">{{ podcast.id }}</th>
+                <td>{{ podcast.title }}</td>
+                <td>{{ podcast.createDate | date("m/d/Y") }}</td>
+                <td>{{ podcast.user.email }}</td>
+                <td class="d-flex justify-content-around">
+                    <a href="{{ path('podcast_edit', {'id': podcast.id}) }}"><button class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button></a>
+                    {% if podcast.isActive %}
+                        {% include "podcast/_disablePodcast_form.html.twig" %}
+                    {% else %}
+                        {% include "podcast/_enablePodcast_form.html.twig" %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
 {% endblock %}
