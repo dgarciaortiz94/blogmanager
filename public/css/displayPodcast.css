@@ -4,7 +4,7 @@ body {
 }
 
 .podcast {
-    background-color: rgb(33, 33, 36);
+    background-color: rgb(255, 255, 255);
 }
 
 .picture-podcast {
@@ -19,4 +19,30 @@ body {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
+}
+
+.row {
+    width: 100%;
+}
+
+.comments-container {
+    border-bottom: rgb(206, 80, 80) 4px solid;
+    padding: 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+
+
+@media (max-width: 768px) {
+    .comments-container {
+        border: none;
+    }
 }
