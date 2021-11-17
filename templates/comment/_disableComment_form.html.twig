@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('comment_disable', {'id': commentItem.id}) }}" onsubmit="return confirm('¿Estas seguro de que deseas eliminar este comentario?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('disable' ~ commentItem.id) }}">
+    <button class="btn"><i class="bi bi-archive-fill"></i></button>
+</form>

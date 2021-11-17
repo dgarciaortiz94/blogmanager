@@ -9,6 +9,9 @@
 
 {% block content %}
 <p class="h4 py-2 text-secondary border-bottom border-secondary">Todos los podcasts</p>
+
+{% include "includes/noPodcasts.html.twig" with {'podcasts': podcasts} %}
+
 <table class="table table-striped text-center my-5">
     <thead>
         <tr>
