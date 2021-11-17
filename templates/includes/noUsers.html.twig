@@ -1,0 +1,6 @@
+{% if users|length == 0 or users|length == 1 %}
+    <div class="container bg-danger text-white mt-5 p-5" style="margin-bottom: 10vw;">
+        <p>Todavía no hay ningun usuario.</p>
+        <p>Puede registrarse <a href="{{path('app_register')}}">aquí</a></p>
+    </div>
+{% endif %}

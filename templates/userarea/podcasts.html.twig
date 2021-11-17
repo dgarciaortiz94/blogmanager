@@ -13,5 +13,8 @@
         <h1 class="mt-5">Mis podcasts</h1>
         <a href="{{ path('podcast_new') }}"><button class="btn btn-success mr-0 h-25 shadow">Crear podcast</button></a>
     </div>
+
+    {% include "includes/noPodcasts.html.twig" with {'podcasts': podcasts} %}
+
     {% include "/includes/podcasts.html.twig" %}
 {% endblock %}

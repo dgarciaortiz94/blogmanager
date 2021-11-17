@@ -1,0 +1,6 @@
+{% if podcasts|length == 0 %}
+    <div class="container bg-danger text-white mt-5 p-5" style="margin-bottom: 10vw;">
+        <p>Todavía no hay ningun podcast.</p>
+        <p>Puede crear un nuevo podcast con el botón crear podcast del <a href="{{path('user_podcasts')}}">Area usuario.</a></p>
+    </div>
+{% endif %}

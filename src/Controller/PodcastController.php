@@ -205,7 +205,6 @@ class PodcastController extends AbstractController
     public function disablePodcast(Request $request, Podcast $podcast): Response
     {
         if ($this->isCsrfTokenValid('disable'.$podcast->getId(), $request->request->get('_token'))) {
-            echo ("pasa por aquí");
             $entityManager = $this->getDoctrine()->getManager();
             
             $podcast->setIsActive(false);
