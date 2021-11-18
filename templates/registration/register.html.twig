@@ -1,0 +1,55 @@
+{% extends 'layout-register.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesInLine %}
+    <style>
+        .left_block {
+            background-image: url("{{ asset('images/web/register_left.jpg') }}")
+        }
+    </style>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex h-100">
+        <div class="left_block col-6">
+            <p class="text-item-h1 h1 bg-dark text-white">Descubre</p>
+            <p class="text-item-h2 h2">Escucha</p>
+            <p class="text-item-h3 h3">Crea</p>
+        </div>
+        <div class="right_block container col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
+            <nav class="navbar navbar-dark">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+            </nav>
+
+            <p class="display-3 mb-4">Registrate</p>
+            <p class="mb-5">O haz <a href="{{ path("app_login") }}" class="text-success">login</a> si ya tienes cuenta</p>
+
+            {{ form_start(registrationForm) }}
+                {{ form_label(registrationForm.name, "Nombre*") }}
+                {{ form_row(registrationForm.name) }}
+                {{ form_label(registrationForm.firstname, "Primer apellido*") }}
+                {{ form_row(registrationForm.firstname) }}
+                {{ form_label(registrationForm.lastname, "Segundo apellido") }}
+                {{ form_row(registrationForm.lastname) }}
+                {{ form_label(registrationForm.email, "Correo electrónico*") }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_label(registrationForm.plainPassword, "Contraseña*") }}
+                {{ form_row(registrationForm.plainPassword) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms, "Aceptar términos y condiciones generales") }}
+
+                <button type="submit" class="btn btn-primary d-block mx-auto">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

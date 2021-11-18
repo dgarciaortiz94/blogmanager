@@ -1,0 +1,21 @@
+<nav class="bg-dark px-5 d-none d-xl-block col-xl-2 col-2 nav-bar">
+    <ul class="nav flex-column text-center my-5">
+        <li class="nav-item p-2">
+            <a class="nav-link" href="{{ path('home') }}">Home</a>
+        </li>
+        <li class="nav-item p-2">
+            <a class="nav-link" href="{{ path('user_podcasts') }}">Area usuario</a>
+        </li>
+        <li class="nav-item p-2">
+            <a class="nav-link" href="{{ path('adminpanel.show_podcasts') }}">Podcasts</a>
+        </li>
+        <li class="nav-item p-2">
+            <a class="nav-link" href="{{ path('adminpanel.show_users') }}">Usuarios</a>
+        </li>
+        <li class="nav-item p-2" style="border: none;">
+            <div class="my-5">
+                <a href="{{ path('app_logout') }}"><button class="btn btn-warning">Cerrar sesión</button></a>
+            </div>
+        </li>
+    </ul>
+</nav>

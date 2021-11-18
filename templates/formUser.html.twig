@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <section>
+    {% block section %}
+        <div class="container">
+            <div class="m-5 p-5 shadow-lg d-flex flex-column justify-content-between align-items-center">
+                {% block form %}
+
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+    </section>
+{% endblock %}

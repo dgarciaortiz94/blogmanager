@@ -1,0 +1,15 @@
+{% extends 'formPodcast.html.twig' %}
+
+{% block title %}Editar Podcast{% endblock %}
+
+{% block content %}
+    <h1>Editar Podcast</h1>
+
+    {% set edit = true %}
+
+    {{ include('podcast/_form.html.twig', {'button_label': 'Update', 'edit': true}) }}
+{% endblock %}
+
+{% block previewView %}
+    <p>Hola</p>
+{% endblock %}

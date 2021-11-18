@@ -1,0 +1,29 @@
+{% if is_granted('ROLE_USER') %}
+    {% include "comment/_form.html.twig" %}
+{% else %}
+<div class="w-100 d-flex flex-column justify-content-center align-items-center">
+    <p>Necesitas iniciar sesión para comentar</p>
+    <a href="{{ path('app_login') }}" class="mb-4"><button class="btn btn-danger">Iniciar sesión</button></a>
+</div>
+{% endif %}
+
+<div class="my-4">
+    {% set index = numComments + 1 %}
+
+    {% for commentItem in commentItems %}
+        {% set index = index - 1 %}
+        {% if commentItem.isActive %}
+            <div class="d-flex justify-content-between">
+                <p><b><span class="h3 text-secondary mr-3">#{{ index }}</span>{{ commentItem.user.name }} {{ commentItem.user.firstname }}</b></p>
+                {% if app.user.id is defined and (commentItem.user.id == app.user.id or app.user.name == 'Admin')  %}
+                    {% include "comment/_disableComment_form.html.twig" %}
+                {% endif %}
+            </div>
+            <p>{{ commentItem.content }}</p>
+        {% else %}
+            <p class="h3 text-secondary mr-3">#{{ index }}</p>
+            <i><p>Este comentario ha sido eliminado.</p></i>
+        {% endif %}
+        <hr>
+    {% endfor %}
+</div>

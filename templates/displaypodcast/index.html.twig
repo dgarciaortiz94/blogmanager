@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/displayPodcast.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="row d-flex py-5">
+        <section class="col-md-6 col-lg-7 col--9 podcast container p-5 mb-5 shadow">
+            <div class="picture-podcast mb-3" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
+                <div class="dark-filter d-flex">
+                    <h1 class="py-4 px-5 text-white">{{ podcast.title }}</h1>
+                </div>
+            </div>
+            <audio src="{{asset('audios/podcasts/' ~ podcast.audio)}}" controls="controls" class="w-100 mb-3"></audio>
+            <p>{{ podcast.description }}</p>
+        </section>
+
+        <aside class="comments-container col-md-5 col-lg-4 col-xl-3 m-xs-5 m-md-0 bg-white position">
+            <p class="h2 bg-danger px-5 py-3 mb-4 text-white">Comentarios</p>
+            <div class="px-5">
+                {% include "comment/index.html.twig" with {'commentItems': commentItems} %}
+            </div>
+        </aside>
+    </div>
+{% endblock %}

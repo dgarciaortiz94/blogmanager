@@ -1,0 +1,59 @@
+{% extends 'layout-register.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block stylesInLine %}
+    <style>
+        body {
+            background-image: url("{{ asset('images/web/login.jpg') }}")
+        }
+    </style>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="w-100 h-100">
+    <div class="nav-container d-flex justify-content-md-end mt-3 mx-5">
+        {% include "includes/menuLogin.html.twig" %}
+    </div>
+    <div class="login-container container d-flex justify-content-center h-50">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <form method="post" class="form-login p-5 sm-w-100 md-w-50 lg-w-25 d-flex flex-column mx-auto sm-shadow rounded">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <p class="text-center display-4">Login</p>
+                <p class="mb-4 text-center"><a href="{{ path("app_register") }}">Regístrate</a> si aun no tienes cuenta</p>
+
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control form-control-sm my-3" autocomplete="email" required autofocus placeholder="Correo electrónico">
+                <input type="password" name="password" id="inputPassword" class="form-control form-control-sm mb-4" autocomplete="current-password" required placeholder="Contraseña">
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                {# REMEMBER ME #}
+                {#<div class="checkbox mb-3 d-flex justify-content-center">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>#}
+
+                <button class="btn btn-lg btn-primary mx-auto" type="submit">
+                    Sign in
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

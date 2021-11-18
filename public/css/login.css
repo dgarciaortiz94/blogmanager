@@ -1,0 +1,39 @@
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.form-login {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.form-control {
+    background-color: inherit;
+    color: #ffffff;
+}
+
+.form-control:focus {
+    background-color: rgba(121, 121, 121, 0.1);
+    color: #B2B2B2;
+}
+
+.login-container {
+    margin-top: 10%;
+}
+
+.nav-button {
+    border-color: white;
+}
+
+@media (max-width: 575.98px) {
+    .form-login {
+        background-color: inherit;
+    }
+}
