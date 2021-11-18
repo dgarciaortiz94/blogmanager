@@ -12,30 +12,20 @@
 {% endblock %}
 
 {{ form_start(form) }}
-    {{ form_start(form.name) }}
-        {{ form_label(form.name, "Nombre") }}
-        {{ form(form.name) }}
-    {{ form_start(form.name) }}
+    {{ form_label(form.name, "Nombre") }}
+    {{ form_row(form.name) }}
 
-    {{ form_start(form.firstname) }}
-        {{ form_label(form.firstname, "Primer apellido") }}
-        {{ form(form.firstname) }}
-    {{ form_start(form.firstname) }}
-    
-    {{ form_start(form.lastname) }}
-        {{ form_label(form.lastname, "Segundo apellido") }}
-        {{ form(form.lastname) }}
-    {{ form_start(form.lastname) }}
+    {{ form_label(form.firstname, "Primer apellido") }}
+    {{ form_row(form.firstname) }}
 
-    {{ form_start(form.email) }}
-        {{ form_label(form.email, "Correo electrónico") }}
-        {{ form(form.email) }}
-    {{ form_start(form.email) }}
+    {{ form_label(form.lastname, "Segundo apellido") }}
+    {{ form_row(form.lastname) }}
 
-    {{ form_start(form.roles) }}
-        {{ form_label(form.roles, "Rol") }}
-        {{ form(form.roles) }}
-    {{ form_start(form.roles) }}
+    {{ form_label(form.email, "Correo electrónico") }}
+    {{ form_row(form.email) }}
+
+    {{ form_label(form.roles, "Rol") }}
+    {{ form_row(form.roles) }}
 
     <button class="btn btn-primary mt-4">Enviar</button>
 {{ form_end(form) }}
