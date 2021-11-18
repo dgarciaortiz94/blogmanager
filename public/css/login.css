@@ -24,6 +24,14 @@ body {
     color: #B2B2B2;
 }
 
+.login-container {
+    margin-top: 10%;
+}
+
+.nav-button {
+    border-color: white;
+}
+
 @media (max-width: 575.98px) {
     .form-login {
         background-color: inherit;

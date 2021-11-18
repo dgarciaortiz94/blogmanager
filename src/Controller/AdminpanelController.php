@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\DataHelper\Statistics;
+use App\DataHelper\StatisticsHelper;
 use App\Entity\Comment;
 use App\Entity\User;
 use App\Entity\Podcast;
@@ -21,73 +23,41 @@ class AdminpanelController extends AbstractController
      */
     public function showUsers(): Response
     {
-        $userRepository = $this->getDoctrine()->getRepository(User::class);
-        $users = $userRepository->findAll();
+        $doctrine = $this->getDoctrine();
+        $podcastRepository = $doctrine->getRepository(User::class);
+
+        $users = $podcastRepository->findAll();
+
+        $statisticsHelper = new StatisticsHelper();
 
         return $this->render('adminpanel/showUsers.html.twig', [
             'users' => $users,
-            'statistics' => $this->getStatistics()
+            'statistics' => $statisticsHelper->getStatistics($doctrine)
         ]);
     }
 
 
     /**
-     * @Route("/podcasts", name="adminpanel.show_podcasts")
+     * @Route("/podcasts/{user}", name="adminpanel.show_podcasts")
      */
-    public function showPodcasts(): Response
+    public function showPodcasts($user = null): Response
     {
-        $podcastRepository = $this->getDoctrine()->getRepository(Podcast::class);
-        $podcasts = $podcastRepository->findAll();
+        $doctrine = $this->getDoctrine();
+        $podcastRepository = $doctrine->getRepository(Podcast::class);
+        $userRepository = $doctrine->getRepository(User::class);
+        
+        if ($user != null) {
+            $podcasts = $podcastRepository->getByUser($user);
+        } else {
+            $podcasts = $podcastRepository->findAll();
+        }
+
+        $statisticsHelper = new StatisticsHelper();
 
         return $this->render('adminpanel/showPodcasts.html.twig', [
             'podcasts' => $podcasts,
-            'statistics' => $this->getStatistics()
+            'statistics' => $statisticsHelper->getStatistics($doctrine)
         ]);
-    }
-
-
-
-    public function getStatistics()
-    {
-        $userRepository          = $this->getDoctrine()->getRepository(User::class);
-        $podcastRepository       = $this->getDoctrine()->getRepository(Podcast::class);
-        $commentRepository       = $this->getDoctrine()->getRepository(Comment::class);
-
-        $users = $userRepository->findAll();
-        $podcasts = $podcastRepository->findAll();
-        $comments = $commentRepository->findAll();
-
-        $registeredUsersNumber   = count($users);
-        $activeUsersNumber       = count(array_filter($users, function($i) { return $i->getIsActive() == true; }));
-        $inactiveUsersNumber     = count(array_filter($users, function($i) { return $i->getIsActive() == false; }));
-
-        $podcastsNumber          = count($podcasts);
-        $activePodcastsNumber    = count(array_filter($podcasts, function($i) { return $i->getIsActive() == true; }));
-        $inactivePodcastsNumber  = count(array_filter($podcasts, function($i) { return $i->getIsActive() == false; }));
-
-        $commentsNumber          = count($comments);
-        $commentsActiveNumber    = count(array_filter($comments, function($i) { return $i->getIsActive() == true; }));
-        $commentsInactiveNumber  = count(array_filter($comments, function($i) { return $i->getIsActive() == false; }));
-
-        $statistics = [
-            "USUARIOS" => [
-                "Usuarios registrados"   =>  $registeredUsersNumber,
-                "Usuarios activos"       =>  $activeUsersNumber,
-                "Usuarios bloqueados"     =>  $inactiveUsersNumber
-            ],
-            "PODCASTS" => [
-                "Podcasts"          =>  $podcastsNumber,
-                "Podcasts activos"    =>  $activePodcastsNumber,
-                "Podcasts bloqueados"  =>  $inactivePodcastsNumber
-            ],
-            "COMENTARIOS" => [
-                "Comentarios"          =>  $commentsNumber,
-                "Comentarios activos"    =>  $commentsActiveNumber,
-                "Comentarios bloqueados"  =>  $commentsInactiveNumber
-            ]
-        ];
-
-        return $statistics;
     }
 
 }

@@ -16,12 +16,12 @@
                     </div>
                 </div>
 
-                <div class="container d-flex justify-content-between text-secondary">
-                    <p class="my-0">{{ podcast.user.name }} {{ podcast.user.firstname }}</p>
-                    <p class="my-0">{{ podcast.createDate | date('d-m-Y') }}</p>
-                </div>
+                <div class="card-body pt-1">
+                    <div class="container d-flex justify-content-between text-secondary mb-3">
+                        <p class="my-0"><i>{{ podcast.user.name }} {{ podcast.user.firstname }}</i></p>
+                        <p class="my-0"><i>{{ podcast.createDate | date('d-m-Y') }}</i></p>
+                    </div>
 
-                <div class="card-body">
                     <div class="description-container overflow-hidden mb-3">
                         <p class="content-podcast px-3">{{ podcast.description }}</p>
                     </div>

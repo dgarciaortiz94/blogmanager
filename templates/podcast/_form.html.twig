@@ -1,18 +1,18 @@
 {{ form_start(form) }}
-    {{ form_label(form.title, "Título") }}
+    <b>{{ form_label(form.title, "Título") }}</b>
     {{ form_row(form.title) }}
 
-    {{ form_label(form.description, "Contenido") }}
+    <b>{{ form_label(form.description, "Contenido") }}</b>
     {{ form_row(form.description) }}
     
-    {{ form_label(form.podcast, "Podcast") }}
+    <b>{{ form_label(form.podcast, "Podcast") }}</b>
     {% if edit is defined %}
         {{ form_row(form.podcast, {'required': false}) }}
     {% else %}
         {{ form_row(form.podcast) }}
     {% endif %}
 
-    {{ form_label(form.image, "Imagen de portada") }}
+    <b>{{ form_label(form.image, "Imagen de portada") }}</b>
     {% if edit is defined %}
         {{ form_row(form.image, {'required': false}) }}
     {% else %}

@@ -41,25 +41,6 @@
     </section>
 
     {% block footer %}
-        <footer class="footer container-fluid">
-            <div class="row d-flex justify-content-between mx-auto border-top px-5 pt-4 pb-2">
-                <div class="col-4 text-center"><p>Aplicación web desarrollada en Symfony sin fines comerciales para Doctaforum.</p></div>
-                <div class="col-4 text-center"><p>Diego García Ortiz</p></div>
-                <div class="col-4 text-center">
-                    <p>
-                        PHP 7.4 <br>
-                        MySQL 5.7 <br>
-                        Symfony 5 <br>
-                        Bootstrap <br>
-                    </p>
-            </div>
-            </div>
-            <div class="container row mx-auto border-top">
-                <div class="col-12 text-center">
-                    <p>Repositorio</p>
-                    <p><a href="https://github.com/dgarciaortiz94/doctaforumpodcast">https://github.com/dgarciaortiz94/doctaforumpodcast</a></p>
-                </div>
-            </div>
-        </footer>
+        {% include "includes/footer.html.twig" %}
     {% endblock %}
 {% endblock %}

@@ -2,8 +2,8 @@
     {% include "comment/_form.html.twig" %}
 {% else %}
 <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-    <p>Necesitas estar iniciar sesión para comentar</p>
-    <a href=""><button class="btn btn-danger">Iniciar sesión</button></a>
+    <p>Necesitas iniciar sesión para comentar</p>
+    <a href="{{ path('app_login') }}" class="mb-4"><button class="btn btn-danger">Iniciar sesión</button></a>
 </div>
 {% endif %}
 
