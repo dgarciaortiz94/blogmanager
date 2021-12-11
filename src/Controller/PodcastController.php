@@ -21,12 +21,45 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class PodcastController extends AbstractController
 {
     /**
-     * @Route("/", name="podcast_index", methods={"GET"})
+     * @Route("/{podcastName}", name="displaypodcast")
      */
-    public function index(PodcastRepository $podcastRepository): Response
+    public function index(Request $request, $podcastName): Response
     {
-        return $this->render('podcast/index.html.twig', [
-            'podcasts' => $podcastRepository->findAll(),
+        $podcastName = str_replace("-", " ",$podcastName);
+        $podcastRepository = $this->getDoctrine()->getRepository(Podcast::class);
+        $podcast = $podcastRepository->getOneByTitle($podcastName);
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $commentsItems = $entityManager->getRepository(Comment::class)->getByPodcast($podcast->getId());
+        $numComments = count($commentsItems);
+
+        if (empty($podcast)) {
+            echo "Este podcast no existe";
+            die;
+        }
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setPodcast($podcast);
+            $comment->setUser($this->getUser());
+            $comment->setIsActive(true);
+
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('displaypodcast/index.html.twig', [
+            'podcast' => $podcast,
+            'comment' => $comment,
+            'form' => $form->createView(),
+            'commentItems' => $commentsItems,
+            'numComments' => $numComments
         ]);
     }
 
