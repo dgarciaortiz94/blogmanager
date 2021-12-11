@@ -1,13 +1,15 @@
 {% if is_granted('ROLE_USER') %}
+    <div class="px-4">
     {% include "comment/_form.html.twig" %}
+    </div>
 {% else %}
-<div class="w-100 d-flex flex-column justify-content-center align-items-center">
+<div class="w-100 d-flex flex-column justify-content-center align-items-center px-4">
     <p>Necesitas iniciar sesión para comentar</p>
     <a href="{{ path('app_login') }}" class="mb-4"><button class="btn btn-danger">Iniciar sesión</button></a>
 </div>
 {% endif %}
 
-<div class="my-4">
+<div class="commentItems-container my-4 overflow-auto px-4">
     {% set index = numComments + 1 %}
 
     {% for commentItem in commentItems %}

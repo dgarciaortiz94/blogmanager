@@ -8,23 +8,43 @@
     <link rel="stylesheet" href="{{ asset('css/displayPodcast.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('js/comments.js') }}"></script>
+{% endblock %}
+
+{% block top %}
+    <div class="background-dark comments-opened col-12 p-0 position-absolute position-fixed top-0 d-none"></div>
+    <aside class="comments-container comments-opened bg-white position-absolute position-fixed top-0 d-none {% if is_granted('ROLE_USER') %}logged{% endif %}">
+        <div class="bg-danger px-5 py-3 mb-4 d-flex justify-content-between align-items-baseline">
+            <p class="h2 text-white">Comentarios</p>
+            <i class="bi bi-x h1 text-light close-icon"></i>
+        </div>
+        <div>
+            {% include "comment/index.html.twig" with {'commentItems': commentItems} %}
+        </div>
+    </aside>
+{% endblock %}
+
 {% block content %}
     <div class="row d-flex py-5">
-        <section class="col-md-6 col-lg-7 col--9 podcast container p-5 mb-5 shadow">
+        <section class="col-md-6 col-lg-7 col--9 podcast container p-5 mb-5">
             <div class="picture-podcast mb-3" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
                 <div class="dark-filter d-flex">
                     <h1 class="py-4 px-5 text-white">{{ podcast.title }}</h1>
                 </div>
             </div>
+            <div class="border-bottom d-flex justify-content-between mb-4 px-4">
+                <div>
+                    <p><i>{{ podcast.createDate | date("d") }} de {{ podcast.createDate | date("F") }} de {{ podcast.createDate | date("Y H:i") }}</i></p>
+                </div>
+                <div>
+                    <i class="bi bi-chat-fill open-comment"></i>
+                </div>
+            </div>
             <audio src="{{asset('audios/podcasts/' ~ podcast.audio)}}" controls="controls" class="w-100 mb-3"></audio>
             <p>{{ podcast.description }}</p>
         </section>
-
-        <aside class="comments-container col-md-5 col-lg-4 col-xl-3 m-xs-5 m-md-0 bg-white position">
-            <p class="h2 bg-danger px-5 py-3 mb-4 text-white">Comentarios</p>
-            <div class="px-5">
-                {% include "comment/index.html.twig" with {'commentItems': commentItems} %}
-            </div>
-        </aside>
     </div>
 {% endblock %}
