@@ -26,13 +26,13 @@ class PodcastType extends AbstractType
                 ]
             ])
             ->add('description', TextareaType::class, [
-                'required' => true,
+                'required' => false,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Contenido del artículo',
                     'cols' => '100',
                     'rows' => '10',
-                    'class' => 'mb-3'
+                    'class' => 'mb-3 tinyMCE'
                 ]
             ])
             ->add('podcast', FileType::class, [

@@ -21,7 +21,48 @@ use Symfony\Component\String\Slugger\SluggerInterface;
  * @Route("/podcast")
  */
 class PodcastController extends AbstractController
-{
+{   
+    /**
+     * @Route("/new", name="podcast_new", methods={"GET","POST"})
+     */
+    public function new(Request $request, SluggerInterface $slugger): Response
+    {
+        $podcast = new Podcast();
+        $form = $this->createForm(PodcastType::class, $podcast);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $picture = $form->get('image')->getData();
+            $audio = $form->get('podcast')->getData();
+
+            $fileHelper = new FileHelper();
+
+            $newAudioFilename = $fileHelper->loadAudio($audio, $slugger);
+            $newPictureFilename = $fileHelper->loadPicture($picture, $slugger);
+
+            $user = $entityManager->find(User::class, $this->getUser()->getId());
+
+            $podcast->setAudio($newAudioFilename);
+            $podcast->setPicture($newPictureFilename);
+            $podcast->setCreateDate(new DateTime());
+            $podcast->setUser($user);
+            $podcast->setIsActive(true);
+            
+            $entityManager->persist($podcast);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('user_podcasts', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('podcast/new.html.twig', [
+            'podcast' => $podcast,
+            'form' => $form,
+        ]);
+    }
+
+
     /**
      * @Route("/{podcastName}", name="displaypodcast")
      */
@@ -65,46 +106,6 @@ class PodcastController extends AbstractController
         ]);
     }
 
-    
-    /**
-     * @Route("/new", name="podcast_new", methods={"GET","POST"})
-     */
-    public function new(Request $request, SluggerInterface $slugger): Response
-    {
-        $podcast = new Podcast();
-        $form = $this->createForm(PodcastType::class, $podcast);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $picture = $form->get('image')->getData();
-            $audio = $form->get('podcast')->getData();
-
-            $fileHelper = new FileHelper();
-
-            $newAudioFilename = $fileHelper->loadAudio($audio, $slugger);
-            $newPictureFilename = $fileHelper->loadPicture($picture, $slugger);
-
-            $user = $entityManager->find(User::class, $this->getUser()->getId());
-
-            $podcast->setAudio($newAudioFilename);
-            $podcast->setPicture($newPictureFilename);
-            $podcast->setCreateDate(new DateTime());
-            $podcast->setUser($user);
-            $podcast->setIsActive(true);
-            
-            $entityManager->persist($podcast);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_podcasts', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('podcast/new.html.twig', [
-            'podcast' => $podcast,
-            'form' => $form,
-        ]);
-    }
 
     /**
      * @Route("/{id}", name="podcast_show", methods={"GET"})
