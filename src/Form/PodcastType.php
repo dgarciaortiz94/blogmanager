@@ -33,7 +33,7 @@ class PodcastType extends AbstractType
                     'cols' => '100',
                     'rows' => '4',
                     'class' => 'mb-3',
-                    'maxlenght' => '255'
+                    'maxlength' => '255'
                 ]
             ])
             ->add('description', TextareaType::class, [

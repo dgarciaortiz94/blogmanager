@@ -1,4 +1,4 @@
-<div class="container my-2">
+<div class="container my-3">
     <div class="row row-cols-auto">
     {% for podcast in podcasts %}
         {% set podcastName = podcast.title|replace({" " : "-"}) %}
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="description-container overflow-hidden mb-3">
-                        <p class="content-podcast px-3">{{ podcast.description }}</p>
+                        <p class="content-podcast px-3">{{ podcast.summary }}</p>
                     </div>
                     <a href="{{ path('displaypodcast', {'podcastName': podcastName}) }}" class="text-right"><p>Leer más</p></a>
                 </div>
