@@ -30,21 +30,7 @@
 {% block content %}
     <div class="d-flex py-5">
         <section class="col-12 col-md-10 col-lg-7 podcast container px-md-5 py-4 mb-5">
-            <div class="picture-podcast mb-3" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
-                <div class="dark-filter d-flex">
-                    <h1 class="py-4 px-5 text-white">{{ podcast.title }}</h1>
-                </div>
-            </div>
-            <div class="border-bottom d-flex justify-content-between mb-4 px-4">
-                <div>
-                    <p><i>{{ podcast.createDate | date("d") }} de {{ podcast.createDate | date("F") }} de {{ podcast.createDate | date("Y H:i") }}</i></p>
-                </div>
-                <div>
-                    <i class="bi bi-chat-fill open-comment"></i>
-                </div>
-            </div>
-            <audio src="{{asset('audios/podcasts/' ~ podcast.audio)}}" controls="controls" class="w-100 mb-3"></audio>
-            <p>{{ podcast.description }}</p>
+            {% include "podcast/show.html.twig" with {'podcast': podcast} %}
         </section>
     </div>
 {% endblock %}
