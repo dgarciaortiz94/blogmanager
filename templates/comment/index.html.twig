@@ -16,7 +16,13 @@
         {% set index = index - 1 %}
         {% if commentItem.isActive %}
             <div class="d-flex justify-content-between">
-                <p><b><span class="h3 text-secondary mr-3">#{{ index }}</span>{{ commentItem.user.name }} {{ commentItem.user.firstname }}</b></p>
+                    <div class="d-flex justify-content-start">
+                        <span class="h2 text-secondary mr-3">#{{ index }}</span>
+                        <div>
+                            <p class="m-0"><b>{{ commentItem.user.name }} {{ commentItem.user.firstname }}</b></p>
+                            <p class="comment-date">{{ commentItem.createDate | date('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
                 {% if app.user.id is defined and (commentItem.user.id == app.user.id or app.user.name == 'Admin')  %}
                     {% include "comment/_disableComment_form.html.twig" %}
                 {% endif %}

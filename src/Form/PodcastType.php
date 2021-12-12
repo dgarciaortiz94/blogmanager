@@ -25,6 +25,17 @@ class PodcastType extends AbstractType
                     'class' => 'mb-3'
                 ]
             ])
+            ->add('summary', TextareaType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Contenido del artículo',
+                    'cols' => '100',
+                    'rows' => '4',
+                    'class' => 'mb-3',
+                    'maxlenght' => '255'
+                ]
+            ])
             ->add('description', TextareaType::class, [
                 'required' => false,
                 'label' => false,

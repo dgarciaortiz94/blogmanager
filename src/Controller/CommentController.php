@@ -82,7 +82,7 @@ class CommentController extends AbstractController
     /**
      * @Route("/disable/{id}", name="comment_disable", methods={"POST"})
      */
-    public function disablePodcast(Request $request, Comment $comment): Response
+    public function disableComment(Request $request, Comment $comment): Response
     {
         if ($this->isCsrfTokenValid('disable'.$comment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -92,6 +92,6 @@ class CommentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+        return $this->redirect($request->headers->get('referer'));
     }
 }

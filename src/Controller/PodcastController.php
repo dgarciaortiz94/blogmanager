@@ -87,6 +87,7 @@ class PodcastController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setCreateDate(new DateTime());
             $comment->setPodcast($podcast);
             $comment->setUser($this->getUser());
             $comment->setIsActive(true);
@@ -94,7 +95,7 @@ class PodcastController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+            return $this->redirect($request->headers->get('referer'));
         }
 
         return $this->render('displaypodcast/index.html.twig', [

@@ -39,6 +39,11 @@ class Comment
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $create_date;
+
     
 
     public function getId(): ?int
@@ -90,6 +95,18 @@ class Comment
     public function setIsActive(bool $isActive): self
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getCreateDate(): ?\DateTimeInterface
+    {
+        return $this->create_date;
+    }
+
+    public function setCreateDate(\DateTimeInterface $create_date): self
+    {
+        $this->create_date = $create_date;
 
         return $this;
     }

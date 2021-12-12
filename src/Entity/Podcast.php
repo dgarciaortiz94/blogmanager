@@ -66,6 +66,11 @@ class Podcast
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $summary;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -183,6 +188,18 @@ class Podcast
                 $comment->setPodcast(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(?string $summary): self
+    {
+        $this->summary = $summary;
 
         return $this;
     }
