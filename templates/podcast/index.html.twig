@@ -4,7 +4,7 @@
         {% set podcastName = podcast.title|replace({" " : "-"}) %}
         <div class="col-lg-4 col-md-6 col-sm-12 my-4">
             <div class="podcast border shadow rounded">
-                <div class="picture-podcast mb-3 text-white" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
+                <div class="picture-podcast mb-1 text-white" style="background-image: url({{ asset('images/podcasts/' ~ podcast.picture) }})">
                     <div class="dark-filter d-flex">
                         <h2 class="title-podcast px-3 py-2 w-75">{{ podcast.title }}</h2>
                         {% if (app.user is defined and app.user is not null) and (podcast.user.id == app.user.id and notCrudButtons is not defined) %}
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card-body pt-1">
-                    <div class="container d-flex justify-content-between text-secondary mb-3">
+                    <div class="container d-flex justify-content-between text-secondary mb-3 border-bottom pb-2">
                         <p class="my-0"><i>{{ podcast.user.name }} {{ podcast.user.firstname }}</i></p>
                         <p class="my-0"><i>{{ podcast.createDate | date('d-m-Y') }}</i></p>
                     </div>
