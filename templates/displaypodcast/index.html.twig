@@ -4,19 +4,12 @@
 
 {% block stylesheets %}
     {{ parent() }}
-
-    <link rel="stylesheet" href="{{ asset('css/displayPodcast.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-
-    <script src="{{ asset('js/comments.js') }}"></script>
+    {{ encore_entry_link_tags('displayPodcast') }}
 {% endblock %}
 
 {% block top %}
-    <div class="background-dark comments-opened col-12 p-0 position-absolute position-fixed top-0 d-none"></div>
-    <aside class="comments-container comments-opened bg-white position-absolute position-fixed top-0 d-none {% if is_granted('ROLE_USER') %}logged{% endif %}">
+    <div class="background-dark comments-window col-12 p-0 position-absolute position-fixed top-0 d-none"></div>
+    <aside class="comments-container bg-white position-absolute position-fixed top-0 d-none {% if is_granted('ROLE_USER') %}logged{% endif %}">
         <div class="bg-danger px-5 py-3 mb-4 d-flex justify-content-between align-items-baseline">
             <p class="h2 text-white">Comentarios</p>
             <i class="bi bi-x h1 text-light close-icon"></i>
@@ -33,7 +26,7 @@
             {% include "podcast/show.html.twig" with {'podcast': podcast} %}
 
             <div class="w-100 d-flex justify-content-center mt-5">
-                <button class="open-comment col-9 col-sm-6 col-md-4 btn btn-danger"><i class="bi bi-chat-right-text-fill"></i><b> Ver comentarios</b></button>
+                <button class="comments-button col-9 col-sm-6 col-md-4 btn btn-danger"><i class="bi bi-chat-right-text-fill"></i><b> Ver comentarios</b></button>
             </div>
         </div>
     </div>

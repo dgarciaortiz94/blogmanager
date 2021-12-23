@@ -1,0 +1,11 @@
+%open-comments {
+    cursor: pointer;
+}
+
+.comments-icon {
+    @extend %open-comments;
+}
+
+.comments-button {
+    @extend %open-comments;
+}

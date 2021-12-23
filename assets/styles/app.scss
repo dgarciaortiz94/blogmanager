@@ -1,0 +1,20 @@
+body {
+    background-color: red;
+}
+
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-icons/font/bootstrap-icons.scss';
+
+// @import './displayPodcast.scss';
+// @import './error404.scss';
+@import 'footer';
+// @import './login.scss';
+// @import './newPodcast.scss';
+// @import './podcasts-admin.scss';
+// @import './podcasts.scss';
+// @import './register.scss';
+
+
+@import 'closeIcon';
+@import 'noScroll';
+@import 'textarea';

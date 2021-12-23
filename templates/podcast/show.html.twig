@@ -9,7 +9,7 @@
             <p><i>{{ podcast.createDate | date("d") }} de {{ podcast.createDate | date("F") }} de {{ podcast.createDate | date("Y H:i") }}</i></p>
         </div>
         <div>
-            <i class="bi bi-chat-fill open-comment text-danger position-relative"></i>
+            <i class="bi bi-chat-fill comments-icon text-danger position-relative"></i>
         </div>
     </div>
     <audio src="{{asset('audios/podcasts/' ~ podcast.audio)}}" controls="controls" class="w-100 mb-3"></audio>
