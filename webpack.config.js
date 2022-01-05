@@ -21,7 +21,14 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addStyleEntry('displayPodcast', './assets/styles/displayPodcast.scss')
+    .addStyleEntry('css/displayPodcast', './assets/styles/displayPodcast.scss')
+    .addStyleEntry('css/error404', './assets/styles/error404.scss')
+    .addStyleEntry('css/login', './assets/styles/login.scss')
+    .addStyleEntry('css/newPodcast', './assets/styles/newPodcast.scss')
+    .addStyleEntry('css/podcasts-admin', './assets/styles/podcasts-admin.scss')
+    .addStyleEntry('css/podcasts', './assets/styles/podcasts.scss')
+    .addStyleEntry('css/register', './assets/styles/register.scss')
+
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

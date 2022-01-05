@@ -1,6 +1,6 @@
 {% extends 'layout-register.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registro{% endblock %}
 
 {% block stylesInLine %}
     <style>
@@ -8,6 +8,11 @@
             background-image: url("{{ asset('images/web/register_left.jpg') }}")
         }
     </style>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/register.css') }}">
 {% endblock %}
 
 {% block body %}

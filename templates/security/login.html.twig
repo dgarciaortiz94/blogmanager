@@ -10,6 +10,11 @@
     </style>
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/login.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="w-100 h-100">
     <div class="nav-container d-flex justify-content-md-end mt-3 mx-5">

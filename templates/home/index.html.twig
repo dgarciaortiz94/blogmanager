@@ -1,6 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Inicio{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/podcasts.css') }}">
+{% endblock %}
 
 {% block content %}
 <section>

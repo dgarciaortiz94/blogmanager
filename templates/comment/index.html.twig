@@ -17,8 +17,8 @@
         {% if commentItem.isActive %}
             <div class="d-flex justify-content-between">
                     <div class="d-flex justify-content-start">
-                        <span class="h2 text-secondary mr-3">#{{ index }}</span>
-                        <div>
+                        <span class="h2 text-secondary">#{{ index }}</span>
+                        <div class="mx-3">
                             <p class="m-0"><b>{{ commentItem.user.name }} {{ commentItem.user.firstname }}</b></p>
                             <p class="comment-date">{{ commentItem.createDate | date('d/m/Y H:i') }}</p>
                         </div>
